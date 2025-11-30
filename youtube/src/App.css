@@ -1,0 +1,11 @@
+body{
+  background: #343434;
+  color: white;
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+.submit{
+  width: 100px;
+}

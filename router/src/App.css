@@ -1,0 +1,25 @@
+body{
+  background: #343434;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: monospace;
+  font-size: 50px
+}
+.active{
+  background: green;
+  color: white;
+}
+*::selection{
+  background: white; 
+  color: black;
+}
+.about{
+  background: grey;
+  color: white;
+}
+.information{
+  background: black;
+  color: white;
+}

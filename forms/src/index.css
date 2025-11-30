@@ -1,0 +1,60 @@
+/* paste this in your CSS file or inside a <style> tag */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #343434; /* requested */
+  color: #ffffff;      /* requested */
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+form {
+  width: 340px;
+  padding: 22px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  box-sizing: border-box;
+}
+
+/* labels */
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: 0.4px;
+  color: inherit; /* white */
+}
+
+/* inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.02);
+  color: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+/* focus state */
+input:focus {
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 4px rgba(255,255,255,0.03);
+}
+
+/* small responsive tweak */
+@media (max-width: 380px) {
+  form { width: calc(100% - 32px); padding: 16px; }
+}

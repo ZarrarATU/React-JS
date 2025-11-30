@@ -1,0 +1,115 @@
+/* ---- Global Layout ---- */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+.main {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #222;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+/* ---- Form Section ---- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form label {
+  font-weight: 600;
+  color: #ddd;
+}
+
+.form input {
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #444;
+  color: #fff;
+  transition: 0.2s ease;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: #6a5acd;
+  background-color: #555;
+}
+
+.form button {
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s ease;
+}
+
+.form button:hover {
+  background-color: #5848c2;
+}
+
+/* ---- Expense List ---- */
+.list {
+  margin-top: 25px;
+}
+
+.expense {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #444;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #555;
+  transition: 0.2s ease;
+}
+
+.expense:hover {
+  background-color: #555;
+}
+
+.expense-name {
+  font-weight: 500;
+  color: #fff;
+}
+
+.expense-amount {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* ---- Delete Button ---- */
+.expense button {
+  background-color: #e63946;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.expense button:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}

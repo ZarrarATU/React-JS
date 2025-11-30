@@ -1,0 +1,170 @@
+/* --- Dark Theme Global Styles --- */
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* --- Main Container --- */
+.container {
+  width: 370px;
+  background: #1c1c1c;
+  padding: 25px 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00ff99;
+  letter-spacing: 1px;
+}
+
+/* --- Add Task --- */
+.add-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.addInput {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #2b2b2b;
+  color: #fff;
+  outline: none;
+}
+
+.addInput::placeholder {
+  color: #aaa;
+}
+
+.add-btn {
+  background-color: #00c896;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.add-btn:hover {
+  background-color: #00a67c;
+}
+
+/* --- Task Card --- */
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #2a2a2a;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #333;
+  transition: background 0.3s ease;
+}
+
+.task:hover {
+  background-color: #323232;
+}
+
+.task p {
+  flex: 1;
+  margin: 0 10px;
+  color: #eaeaea;
+  font-size: 15px;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+/* --- Completed Tasks --- */
+.checked {
+  text-decoration: line-through;
+  color: #666;
+}
+
+/* --- Checkbox --- */
+.completed {
+  accent-color: #00ff99;
+  cursor: pointer;
+}
+
+/* --- Actions --- */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Common Button Style */
+.edit,
+.delete,
+.editting {
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Edit Button --- */
+.edit {
+  background-color: #007bff;
+}
+.edit:hover {
+  background-color: #005fcc;
+}
+
+/* --- Delete Button --- */
+.delete {
+  background-color: #dc3545;
+}
+.delete:hover {
+  background-color: #b52a38;
+}
+
+/* --- Save (✓) Button --- */
+.editting {
+  background-color: #00c896;
+}
+.editting:hover {
+  background-color: #00a67c;
+}
+
+/* --- Edit Mode Input --- */
+/* Task text / edit input - appear identical */
+.task p,
+.task input.edit-input {
+  flex: 1;
+  margin: 0 10px;
+  font-size: 15px;
+  color: #f5f5f5;
+  background: transparent; /* remove input background */
+  border: none;            /* remove border */
+  outline: none;           /* remove focus outline */
+  padding: 0;              /* match paragraph exactly */
+  line-height: 1.5;        /* same as paragraph */
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.2s ease;
+}
+
+/* Optional: subtle focus hint (very light) */
+.task input.edit-input:focus {
+  color: #00ff99;           /* text highlight on typing */
+}

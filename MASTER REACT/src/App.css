@@ -1,0 +1,12 @@
+body {
+  background: #333;
+  color: white;
+}
+
+.active {
+  background: red;
+  color: white;
+}
+button{
+  cursor: pointer;
+}
