@@ -18,7 +18,7 @@ function App() {
       <AddVideo addVideo={addVideo}></AddVideo>
 
        <div className='videos'>
-      {videos.map(video=> <Videos key={video.title} video={video}></Videos>)}
+      {videos.map(video=> <Videos videos={videos} setVideos={setVideos} key={video.title} video={video}></Videos>)}
        </div>
       
     </div>

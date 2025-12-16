@@ -48,3 +48,33 @@ body {
   color: #bbb;
   font-size: 12px;
 }
+
+.delete,
+.edit {
+  border: none;
+  padding: 6px 10px;
+  margin: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+/* Delete button */
+.delete {
+  background-color: #e63946;
+}
+
+.delete:hover {
+  background-color: #c92a35;
+}
+
+/* Edit button */
+.edit {
+  background-color: #457b9d;
+}
+
+.edit:hover {
+  background-color: #35607a;
+}
+
