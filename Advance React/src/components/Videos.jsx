@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
 
-function Videos({video,setVideos,videos}) {
+function Videos({video,deleteVideo,editVideo}) {
 
    let [playing,setPlaying] = useState(false)
 
 
-   function handleDelete(id,e){
-    e.stopPropagation()
-    setVideos(videos.filter(vid=>vid.id !== id))
-   }
+   
 
  
 
@@ -21,8 +18,13 @@ function Videos({video,setVideos,videos}) {
                 <p>{video.title}</p>
                 <p>{video.subscribers} | {video.liked ? 'liked': null}</p>
                 <p>{playing ? 'PLAYING...' : 'PAUSED'}</p> 
-                <button onClick={(e)=>handleDelete(video.id,e)} className="delete">X</button>
-                <button className="edit">[]</button>
+                <button onClick={(e)=>{ e.stopPropagation()
+                      deleteVideo(video.id)
+                      }} className="delete">X</button>
+                <button onClick={e=>{
+                   e.stopPropagation()
+                   editVideo(video.id)
+                }} className="edit">[]</button>
             </div>
 
   )
