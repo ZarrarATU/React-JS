@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 
-function Videos({video,deleteVideo,editVideo}) {
+function Videos({video,dispatch,GetEditVideo,getPlayingVideo}) {
 
-   let [playing,setPlaying] = useState(false)
+   // let [playing,setPlaying] = useState(false)
 
 
    
@@ -13,17 +13,20 @@ function Videos({video,deleteVideo,editVideo}) {
 
   return (
    
-         <div onClick={()=>setPlaying(!playing)} className='video'>
+         <div onClick={()=>{
+            getPlayingVideo(video)
+            
+            }} className='video'>
                 <img src={video.img}/>
                 <p>{video.title}</p>
                 <p>{video.subscribers} | {video.liked ? 'liked': null}</p>
-                <p>{playing ? 'PLAYING...' : 'PAUSED'}</p> 
+                {/* <p>{playing ? 'PLAYING...' : 'PAUSED'}</p>  */}
                 <button onClick={(e)=>{ e.stopPropagation()
-                      deleteVideo(video.id)
+                      dispatch({type: 'DELETE',payload: video.id })
                       }} className="delete">X</button>
                 <button onClick={e=>{
                    e.stopPropagation()
-                   editVideo(video.id)
+                   GetEditVideo(video.id)
                 }} className="edit">[]</button>
             </div>
 

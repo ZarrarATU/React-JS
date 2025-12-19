@@ -1,36 +1,65 @@
 import Videos from "./components/videos"
-import { useState } from "react"
+import { useEffect, useReducer, useState } from "react"
 import {data} from './data/data'
 import AddVideo from "./components/addVideo"
 
 
 function App() {
 
-  const [videos,setVideos] = useState(data)
+  function VideoReducer(state,action){
+     switch(action.type){
+        case 'ADD':
+          return [...state,{...action.payload,id: state.length}];
+        case 'DELETE':
+          return state.filter(vid=>vid.id !== action.payload );
+        case 'EDIT':
+         return state.map(vid =>
+    vid.id === action.payload.id
+      ? action.payload
+      : vid
+  )
+        default:
+          return state  
+     }
+  }
+
+  const [videos,dispatch] = useReducer(VideoReducer,data)
+  // const [videos,setVideos] = useState(data)
   const [editableVid,setEditableVid] = useState(null)
+  const [playingVid,setPlayingVid] = useState(null)
 
-  function addVideo(video){
-     setVideos([...videos,{...video,id: videos.length}])
-  }
+  // function addVideo(video){
+  //    setVideos([...videos,{...video,id: videos.length}])
+  // }
 
-  function deleteVideo(id){
+  // function deleteVideo(id){
     
-    setVideos(videos.filter(vid=>vid.id !== id ))
-  }
+    
+  // }
 
   function getEditVideo(id){
     setEditableVid(videos.find(vid=>vid.id === id )) 
   }
 
-  function editVideo(e,editedVideo){
-          e.preventDefault()
-          setVideos(prev=>prev.map(vid=>{
-           return vid.id === editedVideo.id ? editedVideo : vid
-          }))
+  // function editVideo(e,editedVideo){
+  //      
+  //         setVideos()
 
 
-          setEditableVid(null) 
-  }
+  //         setEditableVid(null) 
+  // }
+
+  function getPlayingVideo(playingVid){
+      setPlayingVid(playingVid)
+    }
+
+    useEffect(()=>{
+      if(playingVid){
+        console.log(playingVid.id);
+
+      }
+
+    },[playingVid])
 
 
 //    function editVideo(e,editedVideo) {
@@ -51,10 +80,10 @@ function App() {
   return (
     <div>
 
-      <AddVideo editVideo={editVideo} editableVid={editableVid} addVideo={addVideo}></AddVideo>
+      <AddVideo dispatch={dispatch} editableVid={editableVid}></AddVideo>
 
        <div className='videos'>
-      {videos.map(video=> <Videos editVideo={getEditVideo} deleteVideo={deleteVideo} key={video.title} video={video}></Videos>)}
+      {videos.map(video=> <Videos dispatch={dispatch} getPlayingVideo={getPlayingVideo} GetEditVideo={getEditVideo}  key={video.title} video={video}></Videos>)}
        </div>
       
     </div>
