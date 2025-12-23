@@ -1,14 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { VideoDispatchContext } from '../context/videoDispatchContext'
 
 function AddVideo({ editableVid }) {
 
   let [title, setTitle] = useState('')
   let [subs, setSubs] = useState(0)
+  let count = useRef(0)
+  let inputRef = useRef(null)
   const dispatch = useContext(VideoDispatchContext)
 
 
   useEffect(() => {
+
+       inputRef.current.focus()
+
     if (editableVid) {
       setTitle(editableVid.title)
       setSubs(editableVid.subscribers)
@@ -24,7 +29,8 @@ function AddVideo({ editableVid }) {
     else {
       const newVid = { title: title, img: `https://picsum.photos/id/${subs}/250/150`, liked: false, subscribers: subs, playing: false }
       dispatch({ type: 'ADD', payload: newVid })
-
+      count.current = count.current + 1
+      
     }
     setTitle('')
     setSubs('')
@@ -44,7 +50,7 @@ function AddVideo({ editableVid }) {
   return (
     <form onSubmit={handleSubmit} >
       <p>Title</p>
-      <input value={title} name='title' onChange={handleChange} type="text" />
+      <input ref={inputRef} value={title} name='title' onChange={handleChange} type="text" />
       <p>Subscribers</p>
       <input type="number" name='subs' value={subs} onChange={handleChange} />
 

@@ -5,6 +5,7 @@ import { VideosContext } from "./context/videosContext"
 import { VideoDispatchContext } from "./context/videoDispatchContext"
 import { LightTheme } from './context/ThemeContext'
 import AddVideo from "./components/addVideo"
+import Count from "./components/Count"
 
 
 function App() {
@@ -70,6 +71,8 @@ function App() {
 
 
             <div>
+
+              <Count></Count>
 
               <button onClick={handleTheme} className="themeSwitcher">LIGHT MODE</button>
 
