@@ -13,15 +13,32 @@ function Videos({ video, GetEditVideo, getPlayingVideo }) {
    const fallbackImage = './FALLBACK.jpg'
 
 
-  
+   useEffect(() => {
+      // let id = setInterval(() => {
+      //    console.log('playing......', video.id);
+
+      // }, 2000)
+
+      // return () => {
+      //    clearInterval(id)
+      // }
+
+   }, [])
+
+
 
 
    return (
       <div onClick={() => {
          getPlayingVideo(video)
 
-      }} className={lightTheme ? 'lightVideo': 'video'}>
-         <img src={video.img || fallbackImage} onError={(e) => (e.target.src = fallbackImage)} />
+      }} className={lightTheme ? 'lightVideo' : 'video'}>
+         <img src={video.img || fallbackImage} onError={(e) => 
+            {
+               e.target.src = fallbackImage;
+               console.log(e);
+            }
+         } />
          <p>{video.title}</p>
          <p>{video.subscribers} | {video.liked ? 'liked' : null}</p>
          {/* <p>{playing ? 'PLAYING...' : 'PAUSED'}</p>  */}

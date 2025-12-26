@@ -1,17 +1,34 @@
 import Videos from "./components/videos"
 import { useEffect, useReducer, useState } from "react"
-import { data } from './data/data'
+// import { data } from './data/data'
 import { VideosContext } from "./context/videosContext"
 import { VideoDispatchContext } from "./context/videoDispatchContext"
 import { LightTheme } from './context/ThemeContext'
 import AddVideo from "./components/addVideo"
 import Count from "./components/Count"
+import getData from './data/data'
+
+
+
+
 
 
 function App() {
+  
+  useEffect(()=>{
+    getData().then(data=>{
+      dispatch({type: 'SETDATA',payload: data.videos})
+      
+    })
+    
+    
+  },[])
+
 
   function VideoReducer(state, action) {
     switch (action.type) {
+      case 'SETDATA':
+        return action.payload
       case 'ADD':
         return [...state, { ...action.payload, id: state.length }];
       case 'DELETE':
@@ -27,7 +44,7 @@ function App() {
     }
   }
 
-  const [videos, dispatch] = useReducer(VideoReducer, data)
+  const [videos, dispatch] = useReducer(VideoReducer,[] )
   // const [videos,setVideos] = useState(data)
   const [editableVid, setEditableVid] = useState(null)
   const [playingVid, setPlayingVid] = useState(null)
@@ -49,16 +66,13 @@ function App() {
     setPlayingVid(playingVid)
   }
 
-  useEffect(() => {
-    if (playingVid) {
-      console.log(playingVid.id);
+  // useEffect(() => {
+  //   if (playingVid) {
+  //     console.log(playingVid.id);
 
-    }
+  //   }
 
-  }, [playingVid])
-
-
-
+  // }, [playingVid])
 
 
 

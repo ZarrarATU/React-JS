@@ -1,8 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 function Count() {
 
     const countValue = useRef(0)
+    const [state,setState] = useState(null)
     
     function handleClick(){
         countValue.current = countValue.current + 1
@@ -10,9 +11,18 @@ function Count() {
         
     }
 
+    function handlePrint(){
+        setState(countValue.current)
+        console.log(countValue.current);
+        
+    }
+
+
+
   return (
     <div>
-        <button className="count">COUNT</button>
+        <button onClick={handleClick} className="count">COUNT</button>
+        <button onClick={handlePrint} className="printCount">PRINT</button>
     </div>
   )
 }
