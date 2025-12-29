@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { VideoDispatchContext } from '../context/videoDispatchContext';
 
 
@@ -17,13 +17,13 @@ function AddVideo({ editableVid }) {
 
 
 
-  function fib(n) {
+  const memoFun = useCallback(function fib(n) {
   if (n <= 1) return n;
   return fib(n - 1) + fib(n - 2);
-}
+},[])
 
 
-const memoFib = useMemo(()=>fib(40),[subs])
+const memoFib = useMemo(()=>memoFun(40),[subs,memoFun])
 
   
  

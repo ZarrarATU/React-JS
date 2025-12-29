@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState,memo } from 'react'
 
-function Count() {
+const Count = memo(function Count() {
 
     const countValue = useRef(0)
     const [state,setState] = useState(null)
@@ -25,6 +25,6 @@ function Count() {
         <button onClick={handlePrint} className="printCount">PRINT</button>
     </div>
   )
-}
+})
 
 export default Count
