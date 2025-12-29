@@ -1,18 +1,40 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { VideoDispatchContext } from '../context/videoDispatchContext'
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { VideoDispatchContext } from '../context/videoDispatchContext';
+
+
+
 
 function AddVideo({ editableVid }) {
 
   let [title, setTitle] = useState('')
-  let [subs, setSubs] = useState(0)
+  let [subs, setSubs] = useState(40)
   let count = useRef(0)
   let inputRef = useRef(null)
   const dispatch = useContext(VideoDispatchContext)
+  const [fibValue, setFib] = useState(2)
+
+
+
+
+
+  function fib(n) {
+  if (n <= 1) return n;
+  return fib(n - 1) + fib(n - 2);
+}
+
+
+const memoFib = useMemo(()=>fib(40),[subs])
+
+  
+ 
+
+
+  // const memoFib = useMemo(()=>fib(subs),[subs])
 
 
   useEffect(() => {
 
-       inputRef.current.focus()
+    inputRef.current.focus()
 
     if (editableVid) {
       setTitle(editableVid.title)
@@ -21,6 +43,9 @@ function AddVideo({ editableVid }) {
   }, [editableVid])
 
   function handleSubmit(e) {
+
+    console.log(memoFib)
+
     e.preventDefault()
     if (editableVid) {
       dispatch({ type: 'EDIT', payload: { ...editableVid, title: title, subscribers: subs } })
@@ -30,10 +55,10 @@ function AddVideo({ editableVid }) {
       const newVid = { title: title, img: `https://picsum.photos/id/${subs}/250/150`, liked: false, subscribers: subs, playing: false }
       dispatch({ type: 'ADD', payload: newVid })
       count.current = count.current + 1
-      
+
     }
     setTitle('')
-    setSubs('')
+    setSubs(40)
   }
 
   function handleChange(e) {
@@ -41,7 +66,7 @@ function AddVideo({ editableVid }) {
       setTitle(e.target.value)
     }
     else {
-      setSubs(e.target.value)
+      setSubs(Number(e.target.value))
     }
 
   }
@@ -57,6 +82,7 @@ function AddVideo({ editableVid }) {
 
 
       <button type='submit'>{editableVid ? 'EDIT' : 'ADD'}</button>
+      <p>{fibValue}</p>
 
     </form>
   )

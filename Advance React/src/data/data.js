@@ -8,7 +8,7 @@
 
 
 async function getData() {
-    const res = await fetch('http://localhost:3000/0')
+    const res = await fetch('http://localhost:34000/0')
     const data = await res.json()
     return data
 }

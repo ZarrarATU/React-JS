@@ -14,10 +14,18 @@ import getData from './data/data'
 
 
 function App() {
+
+  const [error,getError] = useState(null)
   
   useEffect(()=>{
     getData().then(data=>{
       dispatch({type: 'SETDATA',payload: data.videos})
+      
+    }).catch(error=>{
+        getData(error.message)
+
+        console.log(error);
+        
       
     })
     
@@ -93,7 +101,8 @@ function App() {
               <AddVideo editableVid={editableVid}></AddVideo>
 
               <div className={lightTheme ? 'lightTheme videos' : 'videos'}>
-                {videos.map(video => <Videos getPlayingVideo={getPlayingVideo} GetEditVideo={getEditVideo} key={video.title} video={video}></Videos>)}
+                
+                {error ? `${error}` : videos.map(video => <Videos getPlayingVideo={getPlayingVideo} GetEditVideo={getEditVideo} key={video.title} video={video}></Videos>)}
               </div>
 
             </div>
